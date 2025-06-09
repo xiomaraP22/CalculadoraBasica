@@ -1,29 +1,30 @@
-def suma(a, b):
-    return a + b
+def calcular(operacion, a, b):
+    if operacion == "suma":
+        return a + b
+    elif operacion == "resta":
+        return a - b
+    elif operacion == "multiplicacion":
+        return a * b
+    elif operacion == "division":
+        try:
+            return a / b
+        except ZeroDivisionError:
+            return "Error: división por cero"
+    else:
+        return "Operación inválida"
 
-def resta(a, b):
-    return a - b
+def main():
+    print("Calculadora refactorizada")
+    print("Operaciones disponibles: suma, resta, multiplicacion, division")
 
-def multiplicacion(a, b):
-    return a * b
+    op = input("Operación: ").lower()
+    try:
+        x = float(input("Primer número: "))
+        y = float(input("Segundo número: "))
+        resultado = calcular(op, x, y)
+        print("Resultado:", resultado)
+    except ValueError:
+        print("Error: entrada inválida")
 
-def division(a, b):
-    return a / b
-
-print("Calculadora básica")
-print("Operaciones: suma, resta, multiplicacion, division")
-
-op = input("Elige operación: ")
-x = float(input("Ingresa el primer número: "))
-y = float(input("Ingresa el segundo número: "))
-
-if op == "suma":
-    print("Resultado:", suma(x, y))
-elif op == "resta":
-    print("Resultado:", resta(x, y))
-elif op == "multiplicacion":
-    print("Resultado:", multiplicacion(x, y))
-elif op == "division":
-    print("Resultado:", division(x, y))
-else:
-    print("Operación inválida")
+if __name__ == "__main__":
+    main()
